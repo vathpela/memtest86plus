@@ -92,6 +92,7 @@ cpu_state_t     cpu_state[MAX_CPUS];
 
 bool            enable_temperature = false;
 bool            enable_trace       = false;
+bool            enable_cpucache    = true;
 
 bool            enable_sm          = true;
 bool            enable_bench       = true;
@@ -129,6 +130,8 @@ static void parse_option(const char *option, const char *params)
         } else if (strncmp(params, "high", 5) == 0) {
             power_save = POWER_SAVE_HIGH;
         }
+    } else if (strncmp(option, "nocpucache", 11) == 0) {
+        enable_cpucache = false;
     } else if (strncmp(option, "smp", 4) == 0) {
         smp_enabled = true;
     } else if (strncmp(option, "trace", 6) == 0) {
